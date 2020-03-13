@@ -2,14 +2,32 @@
 
 /* Attempt MySQL server connection.*/
 
-echo "<h1> Configurez ici, l'accès a votre API :  </h1>
-<form action=\"owt-menu-configuration.php\" method=\"post\">
-End Point : <input type=\"text\" name=\"endpoint\" />
-<input type=\"submit\" value=\"valider\" />
-</form>";
+
+if (!empty($_POST)) {
+    global $wpdb;
+    $table = abctable;
+    $data = array(
+        'name' => $_POST['yourname'],
+    );
+    $format = array(
+        '%s',
+        '%s'
+    );
+    $success = $wpdb->insert($table, $data, $format);
+    if ($success) {
+        echo 'data has been save';
+    }
+} else {
+    ?>
+    <form method="post">
+        <input type="text" name="yourname">
+        <input type="submit">
+    </form>
+    <?php
+}
 
 
-$servername = "localhost";
+/* $servername = "localhost";
 $user = "root";
 $pass = "root";
 $dbname = "abctable";
@@ -35,8 +53,7 @@ if(mysqli_query($link, $sql)){
 }
 
 // Close connection
-mysqli_close($link);
-
+mysqli_close($link); */
 
 
 ?>
