@@ -19,10 +19,17 @@ if (!empty($_POST)) {
     }
 } else {
     ?>
-    <form method="post">
-        <input type="text" name="yourname">
-        <input type="submit">
-    </form>
+    <div class="container">
+        <div class="row">
+            <h1>Insérer votre adresse API.</h1>
+            <div class="col-12">
+                <form method="post">
+                    <input class="form-text" type="text" name="yourname">
+                    <input class="button mt-3" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
     <?php
 }
 
