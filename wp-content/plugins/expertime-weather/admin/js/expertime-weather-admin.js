@@ -1,4 +1,28 @@
 (function( $ ) {
+
+	var callBackGetSuccess = function(data) {
+		console.log("donnees api", data)
+		//alert("Meteo temp  : "  + data.main.temp);
+		var element = document.getElementById("zone_meteo");
+		element.innerHTML = "La temperature est de " + data.main.temp;
+	}
+
+
+	function buttonClickGET() {
+		var queryLoc = document.getElementById("queryLoc").value;
+
+		var url = "https://www.prevision-meteo.ch/services/json/l"+queryLoc;
+
+		$.get(url, callBackGetSuccess).done(function() {
+			//alert( "second success" );
+		})
+			.fail(function() {
+				alert( "error" );
+			})
+			.always(function() {
+				//alert( "finished" );
+			});
+	}
 	'use strict';
 
 	/**
